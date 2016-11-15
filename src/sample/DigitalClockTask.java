@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.control.Label;
+
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.util.TimerTask;
@@ -14,6 +16,9 @@ public class DigitalClockTask extends TimerTask{
         String hours = formatter.format(Gui.hours);
         String minutes = formatter.format( Gui.minutes);
         String seconds = formatter.format(Gui.seconds);
+
+        Gui.digitalClock = new Label();
+        Gui.digitalClock.setText(seconds);
 
         if(Gui.seconds == 60){
             Gui.minutes ++;

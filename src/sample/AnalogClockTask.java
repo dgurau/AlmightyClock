@@ -7,8 +7,6 @@ import java.util.TimerTask;
  */
 public class AnalogClockTask extends TimerTask{
 
-
-
     @Override
     public void run(){
 
@@ -30,7 +28,6 @@ public class AnalogClockTask extends TimerTask{
             Gui.secondHand.setRotate(angleSeconds);
             Gui.minuteHand.setRotate(Gui.minutes*6 + angleMinutes);
             Gui.hourHand.setRotate(Gui.hours*6 + angleHours);
-
 
         }
 
