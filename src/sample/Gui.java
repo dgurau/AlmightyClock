@@ -35,9 +35,6 @@ public class Gui extends Application {
     public static ImageView hourHand = new ImageView();
     public static ImageView clockQuadrant = new ImageView();
 
-    //The DigitalClock
-    public static Label digitalClock;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -52,7 +49,6 @@ public class Gui extends Application {
         //Timers and TimerTasks
         timerClock = new Timer();
         taskAnalogClock = new AnalogClockTask();
-        taskDigitalClock = new DigitalClockTask();
 
         //Start and Stop button
         Button startButton = new Button("Start");
@@ -86,28 +82,21 @@ public class Gui extends Application {
         StackPane analogClockLayout = new StackPane();
         analogClockLayout.getChildren().addAll(clockQuadrant,minuteHand,hourHand,secondHand);
 
-        //The DigitalClock
-        Label digitalClock = new Label();
-
         //Messages to User
         Label speedMessage = new Label();
-        Label timeElapsed = new Label();
-
-        digitalClock.setText("digital clock maybe");
 
         //Main Pane that contains the other layouts
         BorderPane mainLayout = new BorderPane();
         mainLayout.setCenter(analogClockLayout);
         mainLayout.setBottom(buttonsLayout);
         mainLayout.setTop(speedMessage);
-        mainLayout.setLeft(digitalClock);
 
         /**
          * Actions that the application does
          */
+
         //Start the Tasks
         timerClock.scheduleAtFixedRate(taskAnalogClock,1000,1000);
-        //timerClock.scheduleAtFixedRate(taskDigitalClock,1000,1000);
 
         //actions for Start and Stop button
         startButton.setOnAction(e -> {
@@ -121,12 +110,10 @@ public class Gui extends Application {
 
         //Actions for Slower and Faster button
         travelToFuture.setOnAction(e -> {
-
             speedMessage.setText("Time is passing " + speedX + " times faster");
         });
 
         slowTime.setOnAction(e -> {
-
             speedMessage.setText("Time is passing " + speedX + " times slower");
         });
 
